@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-brand: #8B5CF6;
+  --color-dark: #0A0A0A;
+}
+
+@layer base {
+  body {
+    @apply bg-dark text-white font-sans;
+  }
+}
+
+.glass {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10;
+}
+
+.btn-primary {
+  @apply bg-brand hover:bg-brand/90 text-white px-6 py-3 rounded-lg font-semibold transition-all active:scale-95;
+}
+
+.input-field {
+  @apply bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:outline-none focus:border-brand transition-colors;
+}
