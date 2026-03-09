@@ -1,10 +1,77 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import { useApp } from "../context/AppContext";
 import { ArrowRight, Shield, Zap, Globe, Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function LandingPage() {
   const { settings, posts } = useApp();
+
+  useEffect(() => {
+    const title = `${settings.site_name || "HJ Steel"} | Elevator Guide Rail and Steel Supply`;
+    const description =
+      "HJ Steel supplies elevator guide rails and industrial steel products with stable quality and fast delivery.";
+    const origin = window.location.origin;
+    const canonicalUrl = `${origin}/`;
+    const imageUrl = settings.hero_image_url || `${origin}/catalog.pdf`;
+
+    const upsertMeta = (attr: "name" | "property", key: string, content: string) => {
+      let el = document.head.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null;
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
+    };
+
+    const upsertLink = (rel: string, href: string) => {
+      let el = document.head.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
+      if (!el) {
+        el = document.createElement("link");
+        el.setAttribute("rel", rel);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("href", href);
+    };
+
+    const upsertJsonLd = (id: string, payload: object) => {
+      let el = document.head.querySelector(`script#${id}`) as HTMLScriptElement | null;
+      if (!el) {
+        el = document.createElement("script");
+        el.type = "application/ld+json";
+        el.id = id;
+        document.head.appendChild(el);
+      }
+      el.textContent = JSON.stringify(payload);
+    };
+
+    document.title = title;
+    upsertMeta("name", "description", description);
+    upsertMeta("name", "keywords", "HJ Steel, elevator guide rail, steel supply, rail products");
+    upsertMeta("name", "robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
+    upsertMeta("name", "theme-color", "#0f172a");
+    upsertMeta("property", "og:locale", "ko_KR");
+    upsertMeta("property", "og:type", "website");
+    upsertMeta("property", "og:site_name", settings.site_name || "HJ Steel");
+    upsertMeta("property", "og:title", title);
+    upsertMeta("property", "og:description", description);
+    upsertMeta("property", "og:url", canonicalUrl);
+    upsertMeta("property", "og:image", imageUrl);
+    upsertMeta("name", "twitter:card", "summary_large_image");
+    upsertMeta("name", "twitter:title", title);
+    upsertMeta("name", "twitter:description", description);
+    upsertMeta("name", "twitter:image", imageUrl);
+    upsertLink("canonical", canonicalUrl);
+
+    upsertJsonLd("seo-home-jsonld", {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: settings.site_name || "HJ Steel",
+      url: canonicalUrl,
+      inLanguage: "ko-KR",
+    });
+  }, [settings.site_name, settings.hero_image_url]);
 
   return (
     <div className="min-h-screen bg-dark">
