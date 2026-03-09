@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { ArrowLeft, Download, FileText, ChevronRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
+import { ArrowLeft, Download, FileText, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const products = [
   {
@@ -9,7 +9,7 @@ const products = [
     weight: "7.67 kg/m",
     length: "5,000 mm",
     dimensions: { b1: 78, h: 56, k: 10, n: 30, c: 7, f: 8.5 },
-    properties: { area: "10.9 cm²", weight: "8.55 kg/m" }
+    properties: { area: "10.9 cm²", weight: "8.55 kg/m" },
   },
   {
     class: "13K",
@@ -17,7 +17,7 @@ const products = [
     weight: "12.04 kg/m",
     length: "5,000 mm",
     dimensions: { b1: 89, h: 62, k: 16, n: 32, c: 9.5, f: 11.5 },
-    properties: { area: "16.7 cm²", weight: "13.1 kg/m" }
+    properties: { area: "16.7 cm²", weight: "13.1 kg/m" },
   },
   {
     class: "18K",
@@ -25,7 +25,7 @@ const products = [
     weight: "16.78 kg/m",
     length: "5,000 mm",
     dimensions: { b1: 114, h: 89, k: 16, n: 38, c: 9.5, f: 11 },
-    properties: { area: "22.3 cm²", weight: "17.5 kg/m" }
+    properties: { area: "22.3 cm²", weight: "17.5 kg/m" },
   },
   {
     class: "24K",
@@ -33,7 +33,7 @@ const products = [
     weight: "22.18 kg/m",
     length: "5,000 mm",
     dimensions: { b1: 127, h: 89, k: 16, n: 50, c: 9.5, f: 12.5 },
-    properties: { area: "30.2 cm²", weight: "23.7 kg/m" }
+    properties: { area: "30.2 cm²", weight: "23.7 kg/m" },
   },
   {
     class: "30K",
@@ -41,7 +41,7 @@ const products = [
     weight: "27.42 kg/m",
     length: "5,000 mm",
     dimensions: { b1: 140, h: 108, k: 19, n: 50, c: 12.7, f: 15.9 },
-    properties: { area: "37.8 cm²", weight: "29.7 kg/m" }
+    properties: { area: "37.8 cm²", weight: "29.7 kg/m" },
   },
   {
     class: "High Speed 37K",
@@ -49,8 +49,8 @@ const products = [
     weight: "34.1 kg/m",
     length: "5,000 mm",
     dimensions: { b1: 140, h: 102, k: 28.6, n: 51, c: 17.5, f: 14.5 },
-    properties: { area: "45.6 cm²", weight: "35.79 kg/m" }
-  }
+    properties: { area: "45.6 cm²", weight: "35.79 kg/m" },
+  },
 ];
 
 export default function CatalogPage() {
@@ -64,9 +64,9 @@ export default function CatalogPage() {
             <span className="font-medium">홈으로</span>
           </Link>
           <div className="text-xl font-bold tracking-tighter">PRODUCT CATALOG</div>
-          <a 
-            href="/catalog.pdf" 
-            download 
+          <a
+            href="/레일카달로그_에이치제이스틸주식회사260309.pdf"
+            download
             className="flex items-center gap-2 px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-bold border border-brand/20 hover:bg-brand/20 transition-all"
           >
             <Download className="w-4 h-4" /> PDF 다운로드
@@ -76,22 +76,19 @@ export default function CatalogPage() {
 
       <main className="pt-32 pb-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-16"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Elevator Guide Rail<br /><span className="text-brand">Technical Specifications</span></h1>
-            <p className="text-white/40 max-w-2xl text-lg">
-              에이치제이스틸의 고정밀 엘리베이터 가이드레일 규격서입니다. 
-              최고의 안전성과 정밀도를 보장하는 제품 라인업을 확인하세요.
-            </p>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-16">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+              Elevator Guide Rail
+              <br />
+              <span className="text-brand">Technical Specifications</span>
+            </h1>
+            <p className="text-white/40 max-w-2xl text-lg">에이치제이스틸의 고정밀 엘리베이터 가이드레일 규격서입니다. 최고의 안전성과 정밀도를 보장하는 제품 라인업을 확인하세요.</p>
           </motion.div>
 
           {/* Product Grid */}
           <div className="grid grid-cols-1 gap-12">
             {products.map((product, idx) => (
-              <motion.div 
+              <motion.div
                 key={product.class}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -102,7 +99,7 @@ export default function CatalogPage() {
                 <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 transition-opacity">
                   <FileText className="w-64 h-64" />
                 </div>
-                
+
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12">
                   <div>
                     <div className="flex items-center gap-4 mb-6">
@@ -113,7 +110,7 @@ export default function CatalogPage() {
                         <div className="text-xl font-bold">{product.type}</div>
                       </div>
                     </div>
-                    
+
                     <div className="grid grid-cols-2 gap-8 mb-12">
                       <div>
                         <div className="text-xs text-white/40 uppercase tracking-widest font-bold mb-1">Unit Weight</div>
@@ -147,9 +144,7 @@ export default function CatalogPage() {
                     <div className="grid grid-cols-3 gap-6">
                       {Object.entries(product.dimensions).map(([key, val]) => (
                         <div key={key} className="text-center">
-                          <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center mx-auto mb-3 text-brand font-bold text-xs">
-                            {key}
-                          </div>
+                          <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center mx-auto mb-3 text-brand font-bold text-xs">{key}</div>
                           <div className="text-xl font-mono">{val}</div>
                         </div>
                       ))}
@@ -157,11 +152,11 @@ export default function CatalogPage() {
                     <div className="mt-12 pt-8 border-t border-white/5">
                       <div className="flex items-center justify-between text-sm">
                         <span className="text-white/40">Straightness (f/5m)</span>
-                        <span className="font-mono">{product.class === 'High Speed 37K' ? '0.5mm' : '2.0mm'}</span>
+                        <span className="font-mono">{product.class === "High Speed 37K" ? "0.5mm" : "2.0mm"}</span>
                       </div>
                       <div className="flex items-center justify-between text-sm mt-2">
                         <span className="text-white/40">Twist (R)</span>
-                        <span className="font-mono">{product.class === 'High Speed 37K' ? "10'/m" : "30'/m"}</span>
+                        <span className="font-mono">{product.class === "High Speed 37K" ? "10'/m" : "30'/m"}</span>
                       </div>
                     </div>
                   </div>
@@ -171,11 +166,7 @@ export default function CatalogPage() {
           </div>
 
           {/* Fish Plate Section */}
-          <motion.section 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="mt-24"
-          >
+          <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="mt-24">
             <h2 className="text-3xl font-bold mb-12 flex items-center gap-4">
               <div className="w-10 h-1 bg-brand" /> Fish Plate Dimensions
             </h2>
@@ -197,8 +188,8 @@ export default function CatalogPage() {
                     { class: "18K", l1: 280, b2: 114, t3: 20, bolt: "M16×65" },
                     { class: "24K", l1: 280, b2: 127, t3: 20, bolt: "M16×65" },
                     { class: "30K", l1: 380, b2: 140, t3: 39, bolt: "M20×65" },
-                    { class: "37K", l1: 380, b2: 140, t3: 39, bolt: "M20×80" }
-                  ].map(item => (
+                    { class: "37K", l1: 380, b2: 140, t3: 39, bolt: "M20×80" },
+                  ].map((item) => (
                     <tr key={item.class} className="hover:bg-white/[0.02] transition-colors">
                       <td className="px-8 py-6 font-bold text-brand">{item.class}</td>
                       <td className="px-8 py-6 font-mono">{item.l1}</td>
